@@ -1,0 +1,178 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+.movie-list {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr); /* 5 columns */
+  gap: 20px; /* Gap between cards */
+  padding: 20px; /* Padding for the movie-list container */
+}
+/* Responsive styles for MovieCard component */
+.movie-card {
+  display: grid;
+  grid-template-rows: auto 1fr; 
+  background-color: #fff;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 10px;
+  margin-bottom: 10px;
+  box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease-in-out;
+  text-decoration: none;
+  overflow: hidden; /* Ensure the card content doesn't overflow */
+  max-width: 200px;
+}
+.movie-card:hover {
+  box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.2); /* Increase shadow on hover */
+}
+.movie-image {
+  flex: 1; /* Expand to fill available space */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.movie-image img {
+  max-height: 100%;
+  max-width: 100%;
+  object-fit: contain; /* Maintain image aspect ratio without cropping */
+  width: auto;
+  display: block;
+  margin: 0 auto;
+}
+.search-movies{
+  position: fixed;
+}
+.movie-details {
+  padding: 10px 0;
+  text-align: center;
+}
+.movie-title-rating {
+  display: flex;
+  margin-bottom: 5px; /* Add some spacing between title/rating and overview */
+  justify-content: space-between;
+}
+.movie-title {
+  margin: 0;
+  display: flex;
+  font-size: 16px;
+  max-width: 100%;
+  text-align: left;
+}
+.movie-description{
+  display: flex;
+  text-align: left;
+}
+.movie-description p {
+  margin: 0;
+  font-size: 14px;
+  max-width: 100%; 
+  line-height: 1.5;
+  overflow: hidden;
+  white-space: nowrap;
+  max-width: 100%; /* Set maximum width for the description */
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: normal; /* Allow description to wrap within the card */
+  display: -webkit-box;
+  -webkit-line-clamp: 2; /* Show only 2 lines of text */
+  -webkit-box-orient: vertical;
+}
+
+.movie-description.expandable p {
+  white-space: normal;
+}
+
+.ellipsis::after {
+  content: '...(2 lines)';
+}
+.load-more {
+  height: 50px; /* Adjust height as needed */
+  margin-top: 20px; /* Adjust margin as needed */
+  background-color: transparent;
+}
+.movieDetails-card {
+  display: flex;
+}
+.movieDetails-image-sec {
+  position: relative;
+  height: 172px;
+}
+.movieDetails-image {
+  display: flex;
+  width: fit-content;
+}
+.movieDetails-details {
+  margin-left: 10px;
+  position: absolute;
+  top: 1px;
+  left: 113px;
+}
+.movieDetails-details p {
+  margin: 0;
+}
+.movieDetails-image img {
+  width: auto;
+  height: 172px
+}
+.movieDetails-title-rating {
+  display: flex;
+  gap: 5px;
+}
+/* Default styles for larger screens */
+@media (min-width: 512px) {
+  .movie-list {
+    grid-template-columns: repeat(5, 1fr);
+  }
+
+  .movie-card {
+    max-width: 200px;
+  }
+}
+
+/* Responsive styles for screens with width less than 512px */
+@media (max-width: 512px) {
+  .movie-list {
+    grid-template-columns: repeat(2, 1fr);
+    padding: 10px; /* Adjust padding for smaller screens */
+  }
+
+  .movie-card {
+    max-width: calc(100% - 10px);
+    margin-bottom: 10px;
+  }
+
+  .movieDetails-card {
+    flex-direction: column; /* Stack details below image on small screens */
+  }
+
+  .movieDetails-image-sec {
+    height: auto; /* Allow image section to adjust its height */
+  }
+
+  .movieDetails-image {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .movieDetails-image img {
+    width: 100%;
+    height: auto;
+  }
+
+  .movieDetails-details {
+    position: static;
+    margin-top: 10px;
+    left: 0;
+  }
+}
